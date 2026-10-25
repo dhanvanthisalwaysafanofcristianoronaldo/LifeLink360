@@ -1,6 +1,8 @@
 # LifeLink 360
 **Live website:** [Open LifeLink 360](https://lifelink360-hvky0hkpc.vercel.app)
 
+**Local demo:** [http://localhost:5173](http://localhost:5173) — available only on the computer running the frontend and API.
+
 
 **LifeLink 360** is a responsive community-support web application created as a Web Technology academic project. It demonstrates how neighbors can share requests for everyday assistance, offer help, and take part in community missions.
 
