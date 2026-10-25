@@ -16,6 +16,22 @@
 
 The API health endpoint should return JSON with `"ok": true`. If the website shows **API offline**, follow the deployment configuration below; the API can be healthy while the frontend is configured with the wrong API URL or the API does not allow the frontend origin.
 
+## Screenshots
+
+### Community dashboard
+
+![LifeLink 360 community dashboard](docs/screenshots/dashboard.png)
+
+### MongoDB Atlas cluster overview
+
+This screenshot shows the Atlas cluster overview used by the demo; it is not a Data Explorer view of stored documents.
+
+![MongoDB Atlas cluster overview for LifeLink 360](docs/screenshots/mongodb-atlas-cluster.png)
+
+The validated-form screenshot will be added when available. Never include database credentials, connection strings, or real personal data in screenshots.
+
+
+
 ## Features
 
 - Responsive community dashboard with impact statistics and a CSS 3D-style globe illustration.
