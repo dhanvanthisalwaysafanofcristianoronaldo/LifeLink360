@@ -1,0 +1,84 @@
+{
+  "stats": {
+    "openRequests": 12,
+    "activeVolunteers": 131,
+    "actsOfKindness": 348,
+    "communityScore": 94
+  },
+  "requests": [
+    {
+      "id": "LL-2048",
+      "title": "Grocery drop-off for Mrs. Patel",
+      "category": "Food & essentials",
+      "location": "Riverside",
+      "distance": "0.8 mi",
+      "time": "Posted 18 min ago",
+      "people": 1,
+      "urgency": "Today",
+      "icon": "🥬",
+      "color": "mint",
+      "details": "A few grocery items from the neighborhood market would help.",
+      "offeredBy": []
+    },
+    {
+      "id": "LL-2047",
+      "title": "Help moving a small bookshelf",
+      "category": "Home support",
+      "location": "Oakwood",
+      "distance": "1.2 mi",
+      "time": "Posted 42 min ago",
+      "people": 0,
+      "urgency": "This week",
+      "icon": "📦",
+      "color": "peach",
+      "details": "Looking for one neighbor to help move a small bookshelf indoors.",
+      "offeredBy": []
+    },
+    {
+      "id": "LL-2045",
+      "title": "Companionship walk in the park",
+      "category": "Wellbeing",
+      "location": "Maple Grove",
+      "distance": "1.6 mi",
+      "time": "Posted 1 hr ago",
+      "people": 2,
+      "urgency": "Flexible",
+      "icon": "🌿",
+      "color": "lavender",
+      "details": "A friendly walk around the park at a relaxed pace.",
+      "offeredBy": []
+    }
+  ],
+  "missions": [
+    {
+      "slug": "warmth-for-winter",
+      "title": "Warmth for winter",
+      "detail": "Collect coats & blankets for local families",
+      "joined": 25,
+      "goal": 40,
+      "color": "coral",
+      "icon": "🧣",
+      "participants": []
+    },
+    {
+      "slug": "little-library-refresh",
+      "title": "Little library refresh",
+      "detail": "Give neighborhood book boxes some love",
+      "joined": 19,
+      "goal": 30,
+      "color": "blue",
+      "icon": "📚",
+      "participants": []
+    },
+    {
+      "slug": "saturday-park-clean-up",
+      "title": "Saturday park clean-up",
+      "detail": "One hour together makes a greener block",
+      "joined": 32,
+      "goal": 35,
+      "color": "green",
+      "icon": "🌱",
+      "participants": []
+    }
+  ]
+}

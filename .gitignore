@@ -1,0 +1,18 @@
+# Dependencies and generated builds
+node_modules/
+dist/
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data changes are local; backend/data.example.json is the clean seed
+/backend/data.json
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+npm-debug.log*
