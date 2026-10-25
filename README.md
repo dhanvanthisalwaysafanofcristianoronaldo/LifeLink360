@@ -6,7 +6,7 @@
 
 **LifeLink 360** is a responsive community-support web application created as a Web Technology academic project. It demonstrates how neighbors can share requests for everyday assistance, offer help, and take part in community missions.
 
-> **Academic demo only:** LifeLink 360 is not an emergency service. It does not provide emergency dispatch, live GPS tracking, payments, user authentication, or real volunteer matching. All sample counts and requests are illustrative. Do not enter sensitive personal information.
+> **Academic project demo only—not a real emergency response service.** LifeLink 360 does not provide emergency dispatch, live GPS tracking, payments, user authentication, or real volunteer matching. All sample counts and requests are illustrative. Do not enter sensitive personal information.
 
 ## Project links
 
