@@ -4,7 +4,7 @@ LifeLink 360 is a responsive frontend prototype for a Web Technology project abo
 
 ## Run locally
 
-1. Install Node.js (version 18 or newer).
+1. Install Node.js 20.19 or newer.
 2. Open a terminal in this folder.
 3. Run `npm.cmd install` in PowerShell (or `npm install` in Command Prompt).
 4. Open two terminals in this folder. In the first, run `npm.cmd run api` to start the backend at `http://localhost:4000`.
@@ -16,7 +16,7 @@ To create a production build, run `npm.cmd run build`; to preview it locally, ru
 
 - `src/App.jsx` — dashboard UI, API-backed interactions, and request form validation.
 - `src/api.js` — frontend API client and anonymous demo participant ID.
-- `backend/server.js` — Node.js API routes, local CORS handling, and server-side input validation.
+- `backend/server.js` — Node.js API routes, local CORS handling, validation, and MongoDB or JSON startup.
 - `backend/data.example.json` — clean sample data committed to GitHub.
 - `backend/data.json` — local demo data, created from the example file when the API first runs; its changes stay out of Git.
 - `src/styles.css` — responsive layout, visual design, motion, and accessibility adjustments.
@@ -31,9 +31,18 @@ To create a production build, run `npm.cmd run build`; to preview it locally, ru
 - Search and request tabs filter the visible sample requests.
 - Navigation, notification, and profile controls provide small preview interactions.
 
-## Frontend/backend integration readiness
+## MongoDB setup (optional)
 
-The React frontend calls the local Node.js API at `http://localhost:4000`. The API exposes a health endpoint, dashboard data, request submission, request offers, and mission joins. The JSON file is a lightweight local persistence layer suitable for a classroom demo; it can later be replaced by a database and authenticated user accounts. The API validates fields independently of the browser form.
+The React frontend calls the local Node.js API at `http://localhost:4000`. The API exposes a health endpoint, dashboard data, request submission, request offers, and mission joins. By default, it uses `backend/data.json`. To switch to MongoDB Atlas:
+
+1. Create an Atlas cluster and a database user. Add your current IP address to the cluster's network access list.
+2. Copy `.env.example` to `.env` in this project folder.
+3. Replace `MONGODB_URI` in `.env` with the connection string from Atlas. Keep the URI private; `.env` is ignored by Git.
+4. Run `npm.cmd install` if you have not installed the new MongoDB driver, then restart the API with `npm.cmd run api`.
+
+When `MONGODB_URI` is set, the API connects with the official MongoDB Node.js driver and stores the demo dashboard state in the `appState` collection of the `lifelink360` database. The sample data is inserted the first time that collection is empty. Without a URI, the API continues using the local JSON file. The browser still talks only to the Node API, so database credentials never go into the React app.
+
+The API validates fields independently of the browser form. The JSON file is a lightweight local fallback; both storage modes are intended for this classroom prototype.
 
 ## Academic project scope
 
