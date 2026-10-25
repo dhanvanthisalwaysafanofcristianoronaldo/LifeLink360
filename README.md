@@ -44,6 +44,18 @@ When `MONGODB_URI` is set, the API connects with the official MongoDB Node.js dr
 
 The API validates fields independently of the browser form. The JSON file is a lightweight local fallback; both storage modes are intended for this classroom prototype.
 
+## Deploy a live demo (optional)
+
+The app can use a hosted API and frontend while keeping the MongoDB URI on the backend:
+
+1. For example, create a [Render Web Service](https://render.com/docs/web-services) connected to this repository. Use `npm install` as the build command and `npm run api` as the start command. Set its health check path to `/api/health`.
+2. Add these private API environment variables in the hosting dashboard: `MONGODB_URI`, `MONGODB_DB_NAME=lifelink360`, and `FRONTEND_ORIGIN` set to the frontend's exact public origin (for example, `https://your-site.example`). The API listens on the host-provided `PORT` automatically.
+3. Import the repository into [Vercel](https://vercel.com/docs/frameworks/frontend/vite) as a Vite frontend. Set `VITE_API_BASE_URL` to the API's public base URL, without a trailing slash, then rebuild/redeploy the frontend.
+4. Add the backend host's outbound IP address or addresses to the MongoDB Atlas network access list. Add only the frontend origin to `FRONTEND_ORIGIN`; separate multiple allowed origins with commas.
+5. Open the frontend URL and check that `/api/health` reports `mongodb` storage and that dashboard actions work.
+
+Never set `MONGODB_URI` as a `VITE_` variable or commit it to Git. Frontend `VITE_` variables are included in the browser build; keep database credentials on the API service only. Hosting providers may have their own build settings, sleep behavior, and outbound IP policies.
+
 ## Academic project scope
 
 All initial counts and request details are illustrative. New demo requests and participation counts are stored locally in `backend/data.json`, and submission email addresses are validated but not stored. This project has no emergency dispatch, live GPS, payment, authentication, or real volunteer matching. It is not an emergency service. Use sample information only and do not enter sensitive personal information.

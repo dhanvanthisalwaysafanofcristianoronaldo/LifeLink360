@@ -6,11 +6,16 @@ const dataPath = fileURLToPath(new URL('./data.json', import.meta.url));
 const exampleDataPath = fileURLToPath(new URL('./data.example.json', import.meta.url));
 const envPath = fileURLToPath(new URL('../.env', import.meta.url));
 loadLocalEnvironment();
-const port = Number(process.env.API_PORT || 4000);
+const port = Number(process.env.PORT || process.env.API_PORT || 4000);
 const categories = new Set(['Food & essentials', 'Transportation', 'Home support', 'Wellbeing', 'Other']);
 const urgencies = new Set(['Today', 'This week', 'Flexible']);
 let stateCollection = null;
 let pendingWrite = Promise.resolve();
+const allowedOrigins = new Set([
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  ...((process.env.FRONTEND_ORIGIN || '').split(',').map(origin => origin.trim()).filter(Boolean)),
+]);
 
 function loadLocalEnvironment() {
   if (!existsSync(envPath)) return;
@@ -109,7 +114,7 @@ async function readBody(req) {
 
 const server = createServer(async (req, res) => {
   const origin = req.headers.origin;
-  if (origin && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+  if (origin && (allowedOrigins.has(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin))) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -201,9 +206,9 @@ const server = createServer(async (req, res) => {
 });
 
 connectMongoDB().then(usingMongoDB => {
-  server.listen(port, () => {
+  server.listen(port, '0.0.0.0', () => {
     const storage = usingMongoDB ? 'MongoDB' : 'local JSON';
-    console.log(`LifeLink 360 API listening at http://localhost:${port} (${storage} storage)`);
+    console.log(`LifeLink 360 API listening on port ${port} (${storage} storage)`);
   });
 }).catch(error => {
   const safeMessage = process.env.MONGODB_URI ? error.message.replaceAll(process.env.MONGODB_URI, '[redacted MongoDB URI]') : error.message;
